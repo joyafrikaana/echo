@@ -1185,10 +1185,15 @@ img {
 
 @media (max-width: 640px) {
   .stack { width: 90%; max-width: 360px; height: auto; 
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   .stacked-columns { flex-direction: column; align-items: center; gap: 70px; }
+
+  .top p {
+    margin-bottom: 24px;
+  }
 }
+
 
 .layer {
   position: absolute;
@@ -1197,6 +1202,7 @@ img {
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
 
 .process-header h2 {
   text-align: center;
@@ -1299,7 +1305,6 @@ img {
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 12px;
-    margin: 10px;
   }
   
 
@@ -1312,6 +1317,7 @@ img {
   font-size: 14px;
   line-height: 1.5;
 }
+
 
 /* remove extra default spacing between heading and paragraph in stack layers */
 .layer.top h3,
