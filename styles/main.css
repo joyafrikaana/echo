@@ -1082,13 +1082,8 @@ img {
   right: 0;
   width: 300px;
   pointer-events: none;
-  animation: floaty 4s ease-in-out infinite;
 }
 
-@keyframes floaty {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%      { transform: translateY(-15px) scale(1.05); }
-}
 
 /* --- Responsive: stack blocks vertically --- */
 @media (max-width: 768px) {
@@ -1098,15 +1093,28 @@ img {
     
   }
 
+  /* --- Responsive: stack blocks vertically --- */
+@edia (max-width: 768px) {
+  .histogram-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .histogram-block {
-    width: 70%;            /* make blocks fill most of screen */
+    width: 70%;
     max-width: 200px;
   }
 
   .decor {
-    right: -10px;          /* still anchored right */
+    width: 100%;        /* shrink with parent */
+    max-width: 100px;   /* smaller on mobile */
+    bottom: 0;
+    right: 0;        
   }
 }
+}
+  
+  
 /* Text styling */
 .histogram-block h3 {
   font-size: 3rem;
