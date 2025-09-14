@@ -1094,7 +1094,7 @@ img {
   }
 
   /* --- Responsive: stack blocks vertically --- */
-@edia (max-width: 768px) {
+@media (max-width: 768px) {
   .histogram-container {
     flex-direction: column;
     align-items: center;
@@ -1105,9 +1105,7 @@ img {
     max-width: 200px;
   }
 
-  .decor {
-    width: 100%;        /* shrink with parent */
-    max-width: 100px;   /* smaller on mobile */
+  .histogram-block .decor {
     bottom: 0;
     right: 0;        
   }
@@ -1187,10 +1185,8 @@ img {
 
 @media (max-width: 640px) {
   .stack { width: 90%; max-width: 360px; height: auto; }
-  .stacked-columns { flex-direction: column; align-items: center; gap: 50px; }
+  .stacked-columns { flex-direction: column; align-items: center; gap: 70px; }
 }
-
-
 
 .layer {
   position: absolute;
