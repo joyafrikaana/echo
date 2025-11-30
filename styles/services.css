@@ -1,0 +1,19 @@
+/* services.css now only contains shared service-page rules (kept minimal)
+   Per-page section styles have been moved to dedicated files under styles/*.css
+*/
+
+/* Reduce excessive whitespace between CTA and footer on service pages (desktop) */
+@media (min-width: 980px) {
+  .cta.section {
+    padding-bottom: 44px; /* smaller than default 80px to bring CTA closer to footer */
+    padding-top: 44px;
+  }
+}
+
+/* Slightly tighter spacing on wide but not-full desktop screens */
+@media (min-width: 1200px) {
+  .cta.section {
+    padding-bottom: 56px;
+    padding-top: 56px;
+  }
+}

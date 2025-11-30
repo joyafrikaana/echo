@@ -1,0 +1,237 @@
+/* Styles for the Get Started / Contact card */
+:root {
+  /* Use global brand colors where possible */
+  --gs-grad-start: var(--accent, #38bdf8);
+  --gs-grad-end: var(--primary, #0b3b8c);
+  --gs-accent: var(--primary, #0b3b8c);
+  --gs-card-bg: #ffffff;
+  --gs-input-border: #e6e6ef;
+}
+
+.get-started-hero {
+  background: linear-gradient(90deg, var(--gs-grad-start), var(--gs-grad-end));
+  padding: 80px 0 120px;
+}
+
+.get-started-card-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+.get-started-card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--gs-card-bg);
+  border-radius: 18px;
+  padding: 56px 48px 40px;
+  box-shadow: 0 20px 60px rgba(10, 10, 30, 0.16);
+  position: relative;
+}
+
+.get-started-badge {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 0;
+  width: 96px;
+  height: 96px;
+  background: var(--gs-card-bg);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(10, 10, 30, 0.18);
+}
+.get-started-badge img {
+  width: 52px;
+  height: auto;
+}
+
+.get-started-card h2 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 28px; /* push a little under the badge */
+  margin-bottom: 8px;
+}
+.get-started-card p.lead {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.social-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gs-card-bg, #014b6b); /* light blue for better contrast */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(10, 10, 30, 0.12);
+  color: #fff;
+}
+.social-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+.get-started-form {
+  margin-top: 6px;
+}
+.get-started-form {
+  display: grid;
+  /* Always stack fields vertically (one column) so every input is top-to-bottom */
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.get-started-form label {
+  display: block;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 0; /* remove here, inputs will control vertical spacing */
+}
+/* .get-started-form .grid.two > div {
+  margin-bottom: 21px; /* space between stacked items inside the two-column grid 
+} */
+
+.get-started-form > label {
+  margin-bottom: 16px; /* space between full-width labeled controls */
+}
+.get-started-form input,
+.get-started-form textarea,
+.get-started-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--gs-input-border);
+  box-shadow: none;
+  font: inherit;
+  resize: vertical;
+}
+.get-started-form textarea {
+  min-height: 140px;
+}
+.get-started-form input,
+.get-started-form select,
+.get-started-form textarea {
+  display: block;
+  margin-bottom: 16px; /* consistent spacing between fields */
+}
+
+/* For labels that wrap controls (label > input/select/textarea), add a small gap between label text and control */
+.get-started-form label > input,
+.get-started-form label > select,
+.get-started-form label > textarea {
+  margin-top: 8px;
+}
+.get-started-form .btn-primary {
+  background: linear-gradient(90deg, var(--gs-grad-start), var(--gs-grad-end));
+  border: none;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 880px) {
+  .get-started-card {
+    padding: 46px 28px 32px;
+  }
+  .get-started-badge {
+    width: 80px;
+    height: 80px;
+  }
+  .get-started-form .grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .get-started-hero {
+    padding: 48px 0 80px;
+  }
+  .get-started-card {
+    padding: 36px 18px 24px;
+    border-radius: 12px;
+  }
+  .get-started-badge {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* small visual reset to ensure consistency */
+.get-started-card .copyright-tiny {
+  margin-top: 12px;
+}
+
+/* Contact info section styling */
+.contact-info-section {
+  background: #eef7ff; /* different soft blue background */
+  padding: 64px 0;
+}
+.contact-info-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 16px;
+}
+.contact-info-inner h2 {
+  margin-bottom: 28px;
+  color: var(--primary);
+}
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+.contact-info-section .card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 18px;
+  box-shadow: 0 10px 30px rgba(11, 59, 140, 0.06);
+  border: 1px solid rgba(11, 59, 140, 0.04);
+  text-align: center;
+}
+.contact-info-section .card h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.contact-info-section .card p {
+  margin: 0;
+}
+.contact-info-section .card p a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+.contact-socials img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .contact-info-section {
+    padding: 40px 0;
+  }
+}

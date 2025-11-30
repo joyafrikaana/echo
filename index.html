@@ -1,4 +1,13 @@
-﻿<!doctype html>
+﻿</main>
+
+<footer class="site-footer-minimal">
+  <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 0;">
+  <div class="copyright-tiny">&copy; <span id="year"></span> Echo by Octography. All rights reserved.</div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!doctype html>
 <html lang='en'>
 <head>
 <meta charset='utf-8'>
@@ -16,6 +25,9 @@
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap' rel='stylesheet'>
 <link rel='stylesheet' href='./styles/main.css'>
+<link rel='stylesheet' href='./styles/services.css'>
+<link rel='stylesheet' href='./styles/footer.css'>
+<link rel='stylesheet' href='./styles/components/newsletter.css'>
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Echo by Octography">
@@ -30,7 +42,7 @@
 <body>
   <header class='site-header reveal'>
     <div class='container header-inner'>
-  <a href='#' class='logo'><img src='./assets/images/echo-logo.png' alt='Echo logo'></a>
+  <a href='index.html' class='logo'><img src='./assets/images/echo-logo.png' alt='Echo logo'></a>
       <nav class='nav' aria-label='Primary'>
         <button class='nav-toggle' aria-expanded='false' aria-controls='primary-nav'>
           <span class='bar top'></span>
@@ -38,11 +50,22 @@
           <span class='bar bottom'></span>
         </button>
         <ul id='primary-nav' class='nav-list'>
-          <li><a href='#home'>Home</a></li>
-          <li><a href='#branding'>Services</a></li>
-          <li><a href='#process'>How We Work</a></li>
-          <li><a href='#why'>Why Us</a></li>
-          <li><a href='#cta' class='btn btn-primary'>Get Started</a></li>
+          <li><a href='index.html'>Home</a></li>
+          <li class='dropdown'>
+            <a href='services.html'>Services</a>
+            <ul class='dropdown-menu'>
+              <li><a href='branding.html'>Branding</a></li>
+              <li><a href='content-mapping.html'>Content Mapping</a></li>
+              <li><a href='photoshoot.html'>Professional Photoshoot</a></li>
+              <li><a href='social-media.html'>Social Media Management</a></li>
+              <li><a href='media-features.html'>Media Features</a></li>
+              <li><a href='corporate-events.html'>Corporate Events</a></li>
+            </ul>
+          </li>
+          <li><a href='about.html'>About</a></li>
+          <li><a href='portfolio.html'>Portfolio</a></li>
+          <li><a href='blog.html'>Blog</a></li>
+          <li><a href='contact.html' class='btn btn-primary'>Get Started</a></li>
         </ul>
       </nav>
     </div>
@@ -55,10 +78,11 @@
 <h1 class='reveal'>We craft brands people remember.</h1>
 <p class='subhead reveal'>At Echo by Octography, we turn vision into resonance, creating brands that are seen, heard and remembered.</p>
 <div class='hero-cta'>
-  <a href='#contact' class='btn btn-primary'>Book a discovery call</a>
+  <a href='contact.html' class='btn btn-primary'>Book a discovery call</a>
 </div>
 </div>
 </section>
+ 
 
 <section class='intro-banner section'>
 <div class='container'>
@@ -109,7 +133,7 @@
       <p>
   At Echo by Octography, we see branding as more than visuals or slogans. It’s the identity that gives your business or personal brand a voice, builds trust, and sets you apart in a crowded world. We help businesses shape their presence and individuals amplify their influence through authentic, memorable branding.
       </p>
-  <a href="#cta" class="btn">Work With Us</a>
+  <a href="branding.html" class="btn">Learn More</a>
     </div>
   </div>
 </section>
@@ -128,7 +152,7 @@
       <p>
         We help our clients shape content that truly connects with their audience. From social media and marketing campaigns to personal branding, we create strategies that capture the essence of each brand and keep their voice consistent across every platform.
       </p>
-  <a href="#cta" class="btn">Work With Us</a>
+  <a href="content-mapping.html" class="btn">Learn More</a>
     </div>
   </div>
 </section>
@@ -147,7 +171,7 @@
         <p>
           We create high-quality, professional photoshoots tailored for both individuals and businesses. From personal branding portraits to corporate team photography, every image is crafted to reflect authenticity and creativity. Whether it’s elevating your personal profile or showcasing your entire team, our photography helps strengthen your brand’s presence.
         </p>
-  <a href="#cta" class="btn">Work With Us</a>
+  <a href="photoshoot.html" class="btn">Learn More</a>
       </div>
     </div>
   </section>
@@ -159,12 +183,12 @@
       </div>
   
       <!-- Right column (text) -->
-  <div class="social-media-content reveal">
-        <h2>Social Media Management</h2>
+    <div class="social-media-content reveal">
+      <h2>Social Media Management</h2>
         <p>
          At Echo by Octography, we manage your entire social media presence with care and strategy. From content creation and scheduling to community engagement and performance tracking, we handle the details so your brand can shine. Our services include targeted ads and page promotion, designed to boost visibility and attract the right audience. We help you build a loyal, active following while keeping everything aligned with your brand’s goals.
         </p>
-  <a href="#cta" class="btn">Work With Us</a>
+    <a href="social-media.html" class="btn">Learn More</a>
       </div>
     </div>
   </section>
@@ -181,30 +205,47 @@
         <p>
           We position your brand where it matters most. Through our strong media network, we secure features in globally recognized outlets such as Forbes, US Times, New York Business Now, and Business Sharks, while also ensuring visibility in Nigeria’s most respected publications, including The Punch, The Guardian, Vanguard, This Day, and Business Day. Each placement is crafted to amplify your story, enhance credibility, and establish your brand as a trusted voice in the marketplace.
         </p>
-  <a href="#cta" class="btn">Work With Us</a>
+  <a href="media-features.html" class="btn">Learn More</a>
       </div>
     </div>
   </section>
 
-  <!--coporate videography-->
-  <section class="coporate-section" id="corporate">
-    <div class="coporate-container">
+  <!--corporate videography-->
+  <section class="corporate-section" id="corporate">
+    <div class="corporate-container">
       <!-- Left column (image) -->
-  <div class="coporate-image reveal">
+  <div class="corporate-image reveal">
   <img src="./assets/images/crop-lens-camera-near-abstract-lights.jpg" alt="photoshoot showcase">
       </div>
   
       <!-- Right column (text) --> 
-  <div class="coporate-content reveal">
+  <div class="corporate-content reveal">
         <h2>Corporate Event Photography & Videography</h2>
         <p>
           At Echo by Octography, we elevate your corporate events with world-class photography and videography. From conferences and seminars to product launches and milestone gatherings, our team captures every detail with precision and creativity. The result is a collection of striking visuals that not only preserve the essence of your event but also strengthen your brand’s presence in post-event promotions and media exposure.
         </p>
-  <a href="#cta" class="btn">Work With Us</a>
+  <a href="corporate-events.html" class="btn">Learn More</a>
       </div>
     </div>
       </div>
   </section>
+
+ <!-- Blog Snippets Section -->
+  <section class="section blog-snippets-section" id="latest-blog">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest from the Blog</h2>
+      </div>
+      <div class="blog-grid-wrapper">
+        <button class="blog-grid-nav left" aria-label="Scroll left">&#x25C0;</button>
+        <div class="blog-grid" id="blog-snippets-grid">
+          <!-- Blog snippets will be injected here -->
+        </div>
+        <button class="blog-grid-nav right" aria-label="Scroll right">&#x25B6;</button>
+      </div>
+    </div>
+  </section>
+
 
   <section class="process-section" id="process">
     <!-- Heading outside the flex container -->
@@ -259,33 +300,120 @@
       </div>
     </div>
   </section>
+  
+  <!-- Testimonials (carousel) -->
+  <section class="testimonials-section section">
+    <div class="container">
+      <h2 class="section-title reveal">What Our Clients Say</h2>
 
-  <section class="why-choose-echo" id="why">
-    <div class="why-choose-header">
-      <h2>Why Choose Echo by Octography?</h2>
+      <div class="testimonials-carousel" data-carousel>
+        <button class="testimonials-nav prev" aria-label="Previous testimonial">‹</button>
+
+        <div class="testimonials-viewport">
+          <div class="testimonials-track" data-track>
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"Echo by Octography transformed our brand identity completely. Their attention to detail and creative approach helped us stand out in a crowded market. The results exceeded our expectations."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Sarah Johnson</p>
+              <p class="author-industry">Tech Startup Founder</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"Their corporate event photography captured the essence of our conference perfectly. The quality and professionalism were outstanding. Highly recommend for any corporate event."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Amanda Williams</p>
+              <p class="author-industry">Corporate Events Manager</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"The social media management service is exceptional. Our engagement rates have tripled, and we've seen significant growth in our follower base. Professional, creative, and results-driven."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Michael Chen</p>
+              <p class="author-industry">E-commerce Business Owner</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"Their corporate event photography captured the essence of our conference perfectly. The quality and professionalism were outstanding. Highly recommend for any corporate event."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Amanda Williams</p>
+              <p class="author-industry">Corporate Events Manager</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"Their corporate event photography captured the essence of our conference perfectly. The quality and professionalism were outstanding. Highly recommend for any corporate event."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Amanda Williams</p>
+              <p class="author-industry">Corporate Events Manager</p>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="star-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p class="testimonial-text">"Their corporate event photography captured the essence of our conference perfectly. The quality and professionalism were outstanding. Highly recommend for any corporate event."</p>
+            <div class="testimonial-author">
+              <p class="author-name">Amanda Williams</p>
+              <p class="author-industry">Corporate Events Manager</p>
+            </div>
+          </div>
+
+          <!-- additional testimonials (optional) can be appended here -->
+
+          </div>
+        </div>
+
+        <button class="testimonials-nav next" aria-label="Next testimonial">›</button>
+
+        <div class="testimonials-dots" data-dots aria-hidden="false"></div>
+      </div>
+
     </div>
-  
-    <ul class="points-list">
-      <li>
-        <div class="point-title">Expertise & Professionalism</div>
-        <p>We have a dedicated team of branding experts, photographers, videographers, and content creators with years of experience. We understand the nuances of branding and provide creative, tailored solutions for every client.</p>
-      </li>
-      <li>
-        <div class="point-title">Comprehensive Branding</div>
-        <p>From personal to corporate branding, we offer end-to-end services that cater to all your branding needs. Whether you are a startup, an established company, or an individual looking to make a mark, we have the tools and experience to elevate your brand.</p>
-      </li>
-      <li>
-        <div class="point-title">Global Reach</div>
-        <p>Echo by Octography has a strong network, giving our clients opportunities to be featured in both local and international media.</p>
-      </li>
-      <li>
-        <div class="point-title">Customized Approach</div>
-        <p>We recognize that each brand is unique. That’s why we offer customized services designed to meet your specific needs. Whether it’s consulting, content mapping, photography, or social media management, we create a branding strategy that fits your vision.</p>
-      </li>
-    </ul>
   </section>
-  
-  
+
 
   <!---histogram section-->
 
@@ -316,33 +444,59 @@
 <section class='cta section' id='cta'>
 <div class='container cta-inner reveal'>
 <h2>Ready to build a memorable brand?</h2>
-<p>Let’s transform your vision into a strategy that captures attention, builds credibility and position your brand for lasting impact.</p>
-<a href='#contact' class='btn btn-primary btn-lg'>Start a project</a>
+<p>Let's transform your vision into a strategy that captures attention, builds credibility and position your brand for lasting impact.</p>
+<a href='contact.html' class='btn btn-primary btn-lg'>Start a project</a>
 </div>
 </section>
 </main>
 
-<footer class='site-footer reveal' id="contact">
-<div class='container footer-inner'>
-  <nav class="footer-socials" aria-label="Social links">
-    <a href="tel:+15551234567" aria-label="Call us">
-      <img src="./assets/images/call-icon.png" alt="Call" />
-    </a>
-    <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="./assets/images/instagram-icon.png" alt="Instagram" />
-    </a>
-    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter">
-      <img src="./assets/images/twitter-icon.png" alt="Twitter" />
-    </a>
-    <a href="https://wa.me/15551234567" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <img src="./assets/images/whatsapp-icon.png" alt="WhatsApp" />
-    </a>
-  </nav>
-  <p class='copyright'>&copy; <span id='year'></span> Echo by Octography. All rights reserved.</p>
-</div>
-</footer>
-
+<footer class="site-footer full-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><img src="./assets/images/echo-logo.png" alt="Echo logo" /></a>
+        <div class="footer-tagline">Crafting brands that are seen, heard, and remembered.</div>
+      </div>
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="branding.html">Branding</a></li>
+            <li><a href="content-mapping.html">Content Mapping</a></li>
+            <li><a href="photoshoot.html">Photoshoot</a></li>
+            <li><a href="social-media.html">Social Media</a></li>
+            <li><a href="media-features.html">Media Features</a></li>
+            <li><a href="corporate-events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+            <li><a href="mailto:info@echobyoctography.com">info@echobyoctography.com</a></li>
+            <li>Lagos, Nigeria</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0 0 0;">
+    <div class="copyright-tiny">&copy; <span id="year"></span> Echo by Octography. All rights reserved.</div>
+  </div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 <script src="./scripts/main.js" defer></script>
+<script type="module" src="./scripts/home-blog-snippets.js"></script>
+<script src="./scripts/testimonials.js" defer></script>
 
 </body>
 </html>

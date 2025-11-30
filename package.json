@@ -1,0 +1,28 @@
+{
+  "name": "echo-by-octography",
+  "version": "1.0.0",
+  "description": "This is a lightweight, responsive landing page scaffold for a branding agency. It includes semantic sections, base styles, and minimal JavaScript for navigation.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node seed-blog-posts.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joyafrikaana/echo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joyafrikaana/echo/issues"
+  },
+  "homepage": "https://github.com/joyafrikaana/echo#readme",
+  "dependencies": {
+    "@sanity/client": "^7.13.1",
+    "@sanity/image-url": "^1.2.0",
+    "dotenv": "^17.2.3",
+    "node-fetch": "2"
+  }
+}

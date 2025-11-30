@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanity Connection Test</title>
+
+    <!-- Sanity Configuration -->
+    <meta name="sanity-project-id" content="kuqcfg5r" />
+    <meta name="sanity-dataset" content="production" />
+    <meta name="sanity-api-version" content="2025-01-01" />
+
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .test-box {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      h1 {
+        margin-top: 0;
+        color: #0a2e5c;
+      }
+      .status {
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-weight: 500;
+      }
+      .loading {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .success {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .error {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      pre {
+        background: #f3f4f6;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 13px;
+      }
+      .step {
+        margin: 20px 0;
+        padding: 15px;
+        border-left: 3px solid #0a2e5c;
+        background: #f9fafb;
+      }
+      button {
+        background: #0a2e5c;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background: #083057;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-box">
+      <h1>🔍 Sanity CMS Connection Test</h1>
+      <p>
+        This page will test your connection to Sanity and help diagnose any
+        issues.
+      </p>
+
+      <div id="status" class="status loading">Testing connection...</div>
+
+      <div class="step">
+        <h3>Step 1: Check Configuration</h3>
+        <div id="config-check"></div>
+      </div>
+
+      <div class="step">
+        <h3>Step 2: Fetch Posts</h3>
+        <div id="fetch-check"></div>
+      </div>
+
+      <div class="step">
+        <h3>Step 3: Results</h3>
+        <div id="results"></div>
+      </div>
+
+      <button onclick="runTest()">Run Test Again</button>
+    </div>
+
+    <script type="module">
+      import { createClient } from "https://esm.sh/@sanity/client";
+      import config from "./scripts/config.js";
+
+      const sanityConfig = {
+        projectId: config.sanity.projectId,
+        dataset: config.sanity.dataset,
+        useCdn: true,
+        apiVersion: config.sanity.apiVersion,
+        perspective: "published",
+      };
+
+      async function runTest() {
+        const statusDiv = document.getElementById("status");
+        const configDiv = document.getElementById("config-check");
+        const fetchDiv = document.getElementById("fetch-check");
+        const resultsDiv = document.getElementById("results");
+
+        // Reset
+        statusDiv.className = "status loading";
+        statusDiv.textContent = "Testing connection...";
+
+        // Step 1: Show config
+        configDiv.innerHTML = `
+                <pre>${JSON.stringify(sanityConfig, null, 2)}</pre>
+                <p>✅ Configuration loaded</p>
+            `;
+
+        try {
+          // Step 2: Create client and fetch
+          fetchDiv.innerHTML = "<p>⏳ Creating Sanity client...</p>";
+          const client = createClient(sanityConfig);
+
+          fetchDiv.innerHTML += "<p>✅ Client created</p>";
+          fetchDiv.innerHTML += "<p>⏳ Fetching posts...</p>";
+
+          const query = `*[_type == "post"] | order(publishedAt desc) {
+                    _id,
+                    title,
+                    slug,
+                    publishedAt
+                }`;
+
+          const posts = await client.fetch(query);
+
+          fetchDiv.innerHTML += "<p>✅ Posts fetched successfully!</p>";
+
+          // Step 3: Show results
+          if (posts.length === 0) {
+            resultsDiv.innerHTML = `
+                        <p style="color: #d97706;">⚠️ No posts found in Sanity Studio.</p>
+                        <p>To fix this:</p>
+                        <ol>
+                            <li>Open your Sanity Studio (usually at <code>http://localhost:3333</code>)</li>
+                            <li>Create a new post with at least:
+                                <ul>
+                                    <li>Title</li>
+                                    <li>Slug</li>
+                                    <li>Published date</li>
+                                </ul>
+                            </li>
+                            <li>Click "Publish"</li>
+                            <li>Refresh this page</li>
+                        </ol>
+                    `;
+          } else {
+            resultsDiv.innerHTML = `
+                        <p style="color: #059669;">✅ Found ${
+                          posts.length
+                        } post(s)!</p>
+                        <pre>${JSON.stringify(posts, null, 2)}</pre>
+                    `;
+          }
+
+          statusDiv.className = "status success";
+          statusDiv.textContent = `✅ Connection successful! Found ${posts.length} post(s).`;
+        } catch (error) {
+          fetchDiv.innerHTML += `<p style="color: #dc2626;">❌ Error: ${error.message}</p>`;
+          resultsDiv.innerHTML = `
+                    <p style="color: #dc2626;">❌ Connection failed</p>
+                    <pre>${error.stack || error.message}</pre>
+                    <h4>Common Solutions:</h4>
+                    <ol>
+                        <li><strong>CORS Error:</strong> Add your domain to CORS origins in Sanity:
+                            <pre>cd echo-by-octography/echo-by-octography
+sanity cors add http://localhost:3000 --credentials
+sanity cors add http://127.0.0.1:5500 --credentials</pre>
+                        </li>
+                        <li><strong>Project ID Wrong:</strong> Check your sanity.config.js file</li>
+                        <li><strong>Dataset Issue:</strong> Make sure "production" dataset exists</li>
+                        <li><strong>No Posts:</strong> Create and publish at least one post in Sanity Studio</li>
+                    </ol>
+                `;
+
+          statusDiv.className = "status error";
+          statusDiv.textContent = "❌ Connection failed. See details below.";
+        }
+      }
+
+      // Run test on load
+      window.runTest = runTest;
+      runTest();
+    </script>
+  </body>
+</html>

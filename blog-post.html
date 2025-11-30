@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post | Echo by Octography</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <meta name="sanity-project-id" content="kuqcfg5r" />
+    <meta name="sanity-dataset" content="production" />
+    <meta name="sanity-api-version" content="2025-01-01" />
+  </head>
+  <body>
+    <header class="site-header reveal">
+      <div class="container header-inner">
+        <a href="index.html" class="logo"
+          ><img src="./assets/images/echo-logo.png" alt="Echo logo"
+        /></a>
+        <nav class="nav" aria-label="Primary">
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <span class="bar top"></span>
+            <span class="bar middle"></span>
+            <span class="bar bottom"></span>
+          </button>
+          <ul id="primary-nav" class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="services.html">Services</a>
+              <ul class="dropdown-menu">
+                <li><a href="branding.html">Branding</a></li>
+                <li><a href="content-mapping.html">Content Mapping</a></li>
+                <li><a href="photoshoot.html">Professional Photoshoot</a></li>
+                <li><a href="social-media.html">Social Media Management</a></li>
+                <li><a href="media-features.html">Media Features</a></li>
+                <li><a href="corporate-events.html">Corporate Events</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li>
+              <a href="contact.html" class="btn btn-primary">Get Started</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="blog-post-main" style="padding: 90px 24px 0 24px">
+      <section class="modern-blog-post" id="blog-post-hero">
+        <!-- Blog post content will be injected here -->
+      </section>
+      <section class="blog-post-container" id="blog-post-container">
+        <div class="loading">Loading post...</div>
+      </section>
+    </main>
+    <footer class="site-footer">
+    <footer class="site-footer full-footer" id="contact">
+      <div class="container footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo"><img src="./assets/images/echo-logo.png" alt="Echo logo" /></a>
+            <div class="footer-tagline">Crafting brands that are seen, heard, and remembered.</div>
+          </div>
+          <div class="footer-sections">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="branding.html">Branding</a></li>
+                <li><a href="content-mapping.html">Content Mapping</a></li>
+                <li><a href="photoshoot.html">Photoshoot</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="media-features.html">Media Features</a></li>
+                <li><a href="corporate-events.html">Events</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Contact</h4>
+              <ul class="footer-contact">
+                <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                <li><a href="mailto:info@echobyoctography.com">info@echobyoctography.com</a></li>
+                <li>Accra, Ghana</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-socials">
+            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" aria-label="Instagram"><img src="./assets/images/instagram-icon.png" alt="Instagram" /></a>
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter"><img src="./assets/images/twitter-icon.png" alt="Twitter" /></a>
+            <a href="https://wa.me/15551234567" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="./assets/images/whatsapp-icon.png" alt="WhatsApp" /></a>
+          </div>
+          <div class="footer-copyright">&copy; <span id="year"></span> Echo by Octography. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+    <style>
+      .regular-navbar {
+        position: static;
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 2px 8px 0 rgba(10, 46, 92, 0.03);
+      }
+      .modern-blog-post {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 48px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .modern-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #0a2e5c;
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+      }
+      .modern-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+        color: #6b7280;
+        font-size: 1.05rem;
+        gap: 0;
+      }
+      .modern-meta .author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        justify-content: flex-start;
+      }
+      .modern-meta .author img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e5e7eb;
+      }
+      .modern-date {
+        font-size: 1rem;
+        color: #8b949e;
+        font-weight: 500;
+        justify-content: flex-end;
+        text-align: right;
+      }
+      .modern-description {
+        font-size: 1rem;
+        color: #374151;
+        margin-bottom: 24px;
+        font-style: italic;
+        line-height: 1.6;
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        width: 100%;
+      }
+      .modern-cover {
+        width: 100%;
+        max-width: 860px;
+        max-height: 460px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 6px 34px 0 rgba(10, 46, 92, 0.12);
+        margin-bottom: 36px;
+        margin-top: 0;
+        align-self: center;
+      }
+      .modern-body {
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto 40px auto;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px 0 rgba(10, 46, 92, 0.06);
+        padding: 36px 32px 32px 32px;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: #23272f;
+      }
+      .modern-body p {
+        margin-bottom: 1.3em;
+      }
+      .modern-categories {
+        display: flex;
+        gap: 10px;
+          margin-bottom: 2px;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+        align-self: flex-start;
+      }
+      .modern-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #0a2e5c;
+          margin-top: 0;
+          margin-bottom: 8px;
+        letter-spacing: -1px;
+        padding-top: 0.2em;
+      }
+      .modern-categories span {
+        background: #e0e7ff;
+        color: #3b3b3b;
+        border-radius: 999px;
+        padding: 4px 14px;
+        font-size: 0.98rem;
+        font-weight: 500;
+      }
+      .back-link {
+        margin: 0 auto 32px auto;
+        text-align: center;
+      }
+      .back-link a {
+        color: #0a2e5c;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.13rem;
+        border-bottom: 2px solid #0a2e5c;
+        transition: color 0.2s, border 0.2s;
+        padding-bottom: 2px;
+      }
+      .back-link a:hover {
+        color: #6366f1;
+        border-bottom: 2px solid #6366f1;
+      }
+      @media (max-width: 900px) {
+        .modern-blog-post {
+          padding-top: 24px;
+        }
+        .modern-title {
+          font-size: 1.9rem;
+        }
+        .modern-body {
+          padding: 20px 14px;
+          max-width: 92%;
+        }
+        .modern-cover {
+          max-height: 260px;
+        }
+      }
+    </style>
+    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/blog-post.js"></script>
+  </body>
+</html>

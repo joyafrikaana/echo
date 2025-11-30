@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog - Echo by Octography</title>
+    <meta
+      name="description"
+      content="Insights, tips, and stories about branding, content creation, and digital marketing from Echo by Octography."
+    />
+
+    <!-- Sanity Configuration -->
+    <meta name="sanity-project-id" content="kuqcfg5r" />
+    <meta name="sanity-dataset" content="production" />
+    <meta name="sanity-api-version" content="2025-01-01" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/components/newsletter.css" />
+    <link rel="stylesheet" href="./styles/blog.css" />
+    <link rel="stylesheet" href="./styles/featured-post.css" />
+    <style>
+      /* DEBUG: Force blog cards to be visible */
+      .blog-card {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        pointer-events: auto !important;
+      }
+      .blog-grid {
+        display: block !important;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="assets/images/favicon_io/android-chrome-512x512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon_io/favicon-32x32.png"
+    />
+  </head>
+  <body class="page-blog">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo"
+          ><img src="./assets/images/echo-logo.png" alt="Echo logo"
+        /></a>
+        <nav class="nav" aria-label="Primary">
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <span class="bar top"></span>
+            <span class="bar middle"></span>
+            <span class="bar bottom"></span>
+          </button>
+          <ul id="primary-nav" class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="services.html">Services</a>
+              <ul class="dropdown-menu">
+                <li><a href="branding.html">Branding</a></li>
+                <li><a href="content-mapping.html">Content Mapping</a></li>
+                <li><a href="photoshoot.html">Professional Photoshoot</a></li>
+                <li><a href="social-media.html">Social Media Management</a></li>
+                <li><a href="media-features.html">Media Features</a></li>
+                <li><a href="corporate-events.html">Corporate Events</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li>
+              <a href="contact.html" class="btn btn-primary">Get Started</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main style="padding-top: 80px;">
+      <!-- Blog Hero -->
+      <section class="hero" style="padding: 120px 0 60px; min-height: 50vh">
+        <div class="container">
+          <p class="eyebrow reveal">Insights & Stories</p>
+          <h1 class="reveal">Blog</h1>
+          <p class="subhead reveal">
+            Tips, insights, and stories about branding, content creation, and
+            building memorable digital presence.
+          </p>
+        </div>
+      </section>
+
+
+      <!-- Blog Grid (dynamic) -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Latest Articles</h2>
+            <div class="blog-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="branding">Branding</button>
+              <button class="filter-btn" data-filter="content">Content</button>
+              <button class="filter-btn" data-filter="social">Social Media</button>
+              <button class="filter-btn" data-filter="tips">Tips & Tricks</button>
+            </div>
+          </div>
+          <div class="blog-grid-wrapper">
+            <div class="blog-grid"></div>
+          </div>
+        </div>
+      </section>
+
+          <!-- Pagination -->
+          <div class="pagination reveal">
+            <a href="#" class="pagination-btn disabled">← Previous</a>
+            <div class="pagination-numbers">
+              <a href="#" class="pagination-number active">1</a>
+              <a href="#" class="pagination-number">2</a>
+              <a href="#" class="pagination-number">3</a>
+              <span class="pagination-dots">...</span>
+              <a href="#" class="pagination-number">10</a>
+            </div>
+            <a href="#" class="pagination-btn">Next →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="section" style="background: #0a2e5c">
+        <div class="container">
+          <div class="newsletter-box reveal">
+            <h2>Stay Updated</h2>
+            <p>
+              Get the latest insights and tips delivered straight to your inbox.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      
+    </main>
+
+    <footer class="site-footer full-footer" id="contact">
+      <div class="container footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo"><img src="./assets/images/echo-logo.png" alt="Echo logo" /></a>
+            <div class="footer-tagline">Crafting brands that are seen, heard, and remembered.</div>
+          </div>
+          <div class="footer-sections">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="branding.html">Branding</a></li>
+                <li><a href="content-mapping.html">Content Mapping</a></li>
+                <li><a href="photoshoot.html">Photoshoot</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="media-features.html">Media Features</a></li>
+                <li><a href="corporate-events.html">Events</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Contact</h4>
+              <ul class="footer-contact">
+                <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                <li><a href="mailto:info@echobyoctography.com">info@echobyoctography.com</a></li>
+                <li>Lagos, Nigeria</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0 0 0;">
+        <div class="copyright-tiny">&copy; <span id="year"></span> Echo by Octography. All rights reserved.</div>
+      </div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+
+    <script src="./scripts/main.js" defer></script>
+    <script type="module" src="./scripts/blog.js"></script>
+  </body>
+</html>
