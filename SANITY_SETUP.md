@@ -4,7 +4,7 @@
 
 - **Project ID**: kuqcfg5r
 - **Dataset**: production
-- **Project Name**: Echo by Octography
+- **Project Name**: Echo Media HQ
 
 ## Files Created
 

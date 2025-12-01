@@ -16,7 +16,7 @@ This script creates 5 dummy blog posts in your Sanity CMS with proper categories
 ### Step 1: Get Your Write Token
 
 1. Go to [Sanity.io Manage](https://www.sanity.io/manage)
-2. Select your project: **Echo by Octography** (kuqcfg5r)
+2. Select your project: **Echo Media HQ** (kuqcfg5r)
 3. Navigate to **Settings** → **API** → **Tokens**
 4. Click **Add API token**
 5. Give it a name (e.g., "Blog Seeder")

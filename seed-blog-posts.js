@@ -537,7 +537,7 @@ async function getOrCreateAuthor() {
           children: [
             {
               _type: "span",
-              text: "The creative team at Echo by Octography, dedicated to helping brands stand out.",
+              text: "The creative team at Echo Media HQ, dedicated to helping brands stand out.",
             },
           ],
         },

@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Echo by Octography',
+  title: 'Echo Media HQ',
 
   projectId: 'kuqcfg5r',
   dataset: 'production',
