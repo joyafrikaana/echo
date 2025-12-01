@@ -2903,6 +2903,21 @@ blockquote cite {
   }
 }
 
+/* Ensure service page images center on mobile (override per-page side margins) */
+@media (max-width: 768px) {
+  .branding-image img,
+  .content-mapping-image img,
+  .photoshoot-image img,
+  .social-media-image img,
+  .media-image img,
+  .corporate-image img {
+    margin: 0 auto !important;
+    display: block;
+    max-width: 340px; /* keep them visually balanced on small screens */
+    width: 100%;
+  }
+}
+
 /* CTA */
 
 .cta-inner {

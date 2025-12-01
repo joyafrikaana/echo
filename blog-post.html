@@ -58,13 +58,16 @@
         <div class="loading">Loading post...</div>
       </section>
     </main>
-    <footer class="site-footer">
     <footer class="site-footer full-footer" id="contact">
       <div class="container footer-inner">
         <div class="footer-top">
           <div class="footer-brand">
-            <a href="index.html" class="footer-logo"><img src="./assets/images/echo-logo.png" alt="Echo logo" /></a>
-            <div class="footer-tagline">Crafting brands that are seen, heard, and remembered.</div>
+            <a href="index.html" class="footer-logo"
+              ><img src="./assets/images/echo-logo.png" alt="Echo logo"
+            /></a>
+            <div class="footer-tagline">
+              Crafting brands that are seen, heard, and remembered.
+            </div>
           </div>
           <div class="footer-sections">
             <div class="footer-section">
@@ -90,22 +93,29 @@
             <div class="footer-section">
               <h4>Contact</h4>
               <ul class="footer-contact">
-                <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                <li><a href="mailto:info@echobyoctography.com">info@echobyoctography.com</a></li>
-                <li>Accra, Ghana</li>
+                <li><a href="tel:+2348112938136">+2348112938136</a></li>
+                <li>
+                  <a href="mailto:info@echomediahq.com">info@echomediahq.com</a>
+                </li>
+                <li>Lagos, Nigeria</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="footer-socials">
-            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" aria-label="Instagram"><img src="./assets/images/instagram-icon.png" alt="Instagram" /></a>
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter"><img src="./assets/images/twitter-icon.png" alt="Twitter" /></a>
-            <a href="https://wa.me/15551234567" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="./assets/images/whatsapp-icon.png" alt="WhatsApp" /></a>
-          </div>
-          <div class="footer-copyright">&copy; <span id="year"></span> Echo Media HQ. All rights reserved.</div>
+        <hr
+          style="
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 24px 0 0 0;
+          "
+        />
+        <div class="copyright-tiny">
+          &copy; <span id="year"></span> Echo Media HQ. All rights reserved.
         </div>
       </div>
+      <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
     </footer>
     <script src="scripts/main.js"></script>
     <script type="module" src="scripts/blog-post.js"></script>

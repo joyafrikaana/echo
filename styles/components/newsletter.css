@@ -17,9 +17,6 @@
   box-sizing: border-box;
 }
 
-/* Full-bleed background removed: keep the white newsletter card only.
-  If you prefer a full-bleed band, apply it to the page section around
-  the component (avoids duplicate overlapping backgrounds). */
 .newsletter-box h2 {
   font-size: 2.1rem;
   font-weight: 800;

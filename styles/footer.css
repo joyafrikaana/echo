@@ -85,24 +85,103 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 0 18px 0;
+  padding: 10px 0 6px 0;
   gap: 10px;
 }
 .footer-socials {
   display: flex;
-  gap: 18px;
+  gap: 8px !important;
   align-items: center;
 }
-.footer-socials a img {
-  width: 28px;
-  height: 28px;
-  filter: brightness(0) invert(1) grayscale(1) contrast(1.2);
-  opacity: 0.85;
-  transition: opacity 0.2s, filter 0.2s;
+.footer-socials a .social-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  opacity: 0.95;
+  transition: opacity 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+  position: relative;
+  z-index: 1;
 }
-.footer-socials a:hover img {
+.footer-socials a:hover .social-icon {
   opacity: 1;
-  filter: brightness(1.2) invert(0) sepia(1) saturate(4) hue-rotate(180deg);
+  filter: none;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* White circular backdrop for TikTok icon */
+.footer-socials a.social-tiktok {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-socials a.social-tiktok::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Shared white circular backdrop for other social icons (Instagram, Facebook) */
+.footer-socials a.social-backdrop {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-socials a.social-backdrop::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 0;
+}
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer-socials a svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  fill: currentColor;
+  color: #f3f4f6;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
+.footer-socials a:hover svg {
+  opacity: 1;
+  color: #38bdf8;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+/* Hide any HR inside footer to avoid small stray marks */
+.footer-inner hr,
+.footer-bottom hr {
+  display: none;
 }
 .footer-copyright {
   color: #c7d2fe;
