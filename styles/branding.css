@@ -63,6 +63,16 @@
   }
 }
 
+/* Mobile: center the image and constrain width to avoid side-offsets */
+@media (max-width: 768px) {
+  .branding-image img {
+    margin: 0 auto !important;
+    display: block;
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
 .what-included .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

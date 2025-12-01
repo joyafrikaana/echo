@@ -69,6 +69,16 @@
   }
 }
 
+/* Mobile: center the image and constrain width to avoid side-offsets */
+@media (max-width: 768px) {
+  .photoshoot-image img {
+    margin: 0 auto !important;
+    display: block;
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
 /* Section title override to match service pages */
 .section-title,
 h2.section-title {
