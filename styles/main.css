@@ -1280,7 +1280,10 @@ h2 {
 .hero {
   position: relative;
   padding: 160px 0 40px;
-  background: url("../assets/images/bg.jpg") top/cover no-repeat;
+  /* Prefer the new hero image when present, fall back to existing bg.jpg */
+  background: url("../assets/images/echo-hero.jpg") center/cover no-repeat,
+    url("../assets/images/bg.jpg") center/cover no-repeat;
+  background-color: #000; /* fallback background color while images load */
 }
 
 @media (max-width: 980px) {
