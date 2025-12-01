@@ -69,7 +69,21 @@
     margin: 0 auto !important;
     display: block;
     width: 100%;
-    max-width: 340px;
+    max-width: 300px;
+    object-fit: cover;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .branding-image img {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 360px) {
+  .branding-image img {
+    max-width: 220px;
   }
 }
 
