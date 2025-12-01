@@ -1,12 +1,12 @@
 /* Newsletter component styles (moved from main.css) */
 .newsletter-box {
-  max-width: 520px;
+  max-width: 360px;
   margin: 0 auto;
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 6px 32px rgba(56, 189, 248, 0.1),
     0 1.5px 8px rgba(56, 189, 248, 0.06);
-  padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+  padding: 3rem 2.2rem 2.2rem 2.2rem; /* increased top padding so heading sits lower */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,11 +16,16 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+/* Full-bleed background removed: keep the white newsletter card only.
+  If you prefer a full-bleed band, apply it to the page section around
+  the component (avoids duplicate overlapping backgrounds). */
 .newsletter-box h2 {
   font-size: 2.1rem;
   font-weight: 800;
   color: #0a2e5c;
-  margin-bottom: 0.5rem;
+  margin-top: 0.8rem; /* push the heading lower from the top edge */
+  margin-bottom: 0.6rem;
   letter-spacing: -0.5px;
 }
 .newsletter-box p {
@@ -37,7 +42,7 @@
 }
 .newsletter-form input[type="email"] {
   flex: 1 1 10px;
-  max-width: 420px;
+  max-width: 320px;
   min-width: 0;
   width: 100%;
   margin: 0 auto;
@@ -77,17 +82,19 @@
 
 @media (max-width: 1024px) {
   .newsletter-box {
-    max-width: 95vw;
-    padding: 2rem 1.2rem 2rem 1.2rem;
+    max-width: 360px;
+    padding: 2.2rem 1.1rem 1.6rem 1.1rem; /* larger top padding on tablet */
     top: 1.5rem;
   }
   .newsletter-box h2 {
     font-size: 1.6rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.5rem;
   }
   .newsletter-form input[type="email"] {
     font-size: 1rem;
-    padding: 0.7rem 1rem;
-    max-width: 360px;
+    padding: 0.65rem 0.9rem;
+    max-width: 300px;
   }
   .newsletter-form button {
     font-size: 1rem;
@@ -97,13 +104,16 @@
 
 @media (max-width: 700px) {
   .newsletter-box {
-    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
-    top: 1.2rem;
+    padding: 1.1rem 0.5rem 0.75rem 0.5rem; /* increase top padding on mobile */
+    top: 0.7rem;
     min-width: 0;
-    width: 100%;
+    width: 90%;
+    max-width: 300px; /* smaller card on mobile */
   }
   .newsletter-box h2 {
     font-size: 1.3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.45rem;
   }
   .newsletter-form {
     flex-direction: column;
@@ -112,14 +122,14 @@
   }
   .newsletter-form button {
     width: auto;
-    max-width: 220px;
+    max-width: 200px;
     align-self: center;
     padding: 0.7rem 1.2rem;
     min-width: 120px;
   }
   .newsletter-form input[type="email"] {
-    width: 92vw;
-    max-width: 340px;
+    width: 80vw;
+    max-width: 250px;
     min-width: 0;
     font-size: 0.97rem;
     padding: 0.6rem 0.6rem;
@@ -135,16 +145,19 @@
 
 @media (max-width: 480px) {
   .newsletter-box {
-    padding: 0.8rem 0.3rem 1rem 0.3rem;
-    border-radius: 14px;
-    top: 0.5rem;
+    padding: 0.95rem 0.4rem 0.7rem 0.4rem; /* increase top padding on very small phones */
+    border-radius: 12px;
+    top: 0.35rem;
+    max-width: 220px; /* even smaller on very small phones */
   }
   .newsletter-box h2 {
-    font-size: 1.08rem;
+    font-size: 1.2rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.4rem;
   }
   .newsletter-form input[type="email"] {
-    width: 90vw;
-    max-width: 260px;
+    width: 88vw;
+    max-width: 180px;
     font-size: 0.95rem;
     padding: 0.5rem 0.5rem;
     margin: 0 auto;
@@ -155,7 +168,7 @@
     font-size: 0.98rem;
     padding: 0.6rem 1rem;
     width: auto;
-    max-width: 200px;
+    max-width: 150px;
     align-self: center;
     min-width: 110px;
   }

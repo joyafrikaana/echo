@@ -43,7 +43,6 @@ async function renderHomeBlogSnippets() {
             <h3><a href="blog-post.html?slug=${post.slug?.current || ""}">${
           post.title
         }</a></h3>
-            <p>${getExcerpt(post.body, 110)}</p>
             <a href="blog-post.html?slug=${
               post.slug?.current || ""
             }" class="read-more">Read More →</a>
@@ -73,5 +72,42 @@ document.addEventListener("DOMContentLoaded", () => {
     rightBtn.addEventListener("click", () => {
       grid.scrollBy({ left: 320, behavior: "smooth" });
     });
+  }
+
+  // Enable drag-to-scroll on touch devices for the blog grid
+  if (grid) {
+    let isDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    grid.addEventListener("pointerdown", (e) => {
+      isDown = true;
+      startX = e.clientX;
+      startScrollLeft = grid.scrollLeft;
+      grid.style.scrollBehavior = "auto";
+      if (grid.setPointerCapture) grid.setPointerCapture(e.pointerId);
+    });
+
+    grid.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.clientX;
+      const walk = startX - x;
+      grid.scrollLeft = startScrollLeft + walk;
+    });
+
+    function stopGridDrag(e) {
+      if (!isDown) return;
+      isDown = false;
+      grid.style.scrollBehavior = "";
+      if (grid.releasePointerCapture)
+        try {
+          grid.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+    }
+
+    grid.addEventListener("pointerup", stopGridDrag);
+    grid.addEventListener("pointercancel", stopGridDrag);
+    grid.addEventListener("pointerleave", stopGridDrag);
   }
 });

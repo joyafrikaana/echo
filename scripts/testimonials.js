@@ -67,26 +67,63 @@
         moveTo(index + 1);
       });
 
-    // touch support (simple)
+    // touch support (drag to swipe)
     var startX = 0;
     var isDown = false;
+    var startTranslate = 0;
+
+    function getCurrentTranslateX(el) {
+      var style = getComputedStyle(el).transform;
+      if (!style || style === "none") return 0;
+      try {
+        var m = new DOMMatrixReadOnly(style);
+        return m.m41;
+      } catch (err) {
+        var match = style.match(/matrix\(([^)]+)\)/);
+        if (match) {
+          var parts = match[1].split(",");
+          return parseFloat(parts[4]);
+        }
+        return 0;
+      }
+    }
+
     track.addEventListener("pointerdown", function (e) {
       isDown = true;
       startX = e.clientX;
+      startTranslate = getCurrentTranslateX(track);
       track.style.transition = "none";
+      if (track.setPointerCapture) track.setPointerCapture(e.pointerId);
     });
-    window.addEventListener("pointerup", function (e) {
+
+    track.addEventListener("pointermove", function (e) {
+      if (!isDown) return;
+      var diff = e.clientX - startX;
+      track.style.transform = "translateX(" + (startTranslate + diff) + "px)";
+    });
+
+    function endDrag(e) {
       if (!isDown) return;
       isDown = false;
+      if (track.releasePointerCapture)
+        try {
+          track.releasePointerCapture(e.pointerId);
+        } catch (err) {}
       track.style.transition = "";
-      var diff = e.clientX - startX;
-      if (Math.abs(diff) > 40) {
+      var diff = (e && e.clientX ? e.clientX : startX) - startX;
+      // use a threshold relative to card width for a more natural swipe
+      var threshold = Math.min(80, cardWidth / 3);
+      if (Math.abs(diff) > threshold) {
         if (diff < 0) moveTo(index + 1);
         else moveTo(index - 1);
       } else {
         moveTo(index);
       }
-    });
+    }
+
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+    track.addEventListener("pointerleave", endDrag);
 
     window.addEventListener("resize", function () {
       // debounce-ish

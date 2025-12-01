@@ -70,8 +70,8 @@ body {
   align-items: stretch;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* add left/right padding so edge cards aren't visually covered by nav buttons */
-  padding: 8px 56px 12px 56px;
+  /* reduced outer padding so cards can occupy more body width */
+  padding: 8px 36px 12px 36px;
   scroll-snap-type: x mandatory;
   /* show a thin scrollbar where supported */
   scrollbar-width: thin;
@@ -88,8 +88,8 @@ body {
 }
 
 .blog-grid .blog-card {
-  flex: 0 0 360px; /* fixed card width, prevents wrapping */
-  width: 360px;
+  flex: 0 0 480px; /* larger card width for better readability */
+  width: 480px;
   scroll-snap-align: start;
 }
 
@@ -97,23 +97,24 @@ body {
 .blog-grid .blog-card {
   display: flex;
   flex-direction: column;
-  max-width: 360px;
+  max-width: 420px;
   min-width: 0;
   margin: 0;
   border-radius: 16px;
   position: relative;
   background: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
+  border: 1px solid rgba(10, 46, 92, 0.06);
+  box-shadow: 0 12px 30px rgba(10, 46, 92, 0.12);
+  overflow: visible;
   transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1),
-    box-shadow 220ms ease, border-color 180ms ease;
-  will-change: transform, box-shadow;
+    border-color 180ms ease;
+  will-change: transform;
   cursor: pointer;
 }
 
 .blog-grid .blog-card-image {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   position: relative;
 }
@@ -124,27 +125,48 @@ body {
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  -webkit-clip-path: inset(0 0 0 0 round 16px 16px 0 0) !important;
+  clip-path: inset(0 0 0 0 round 16px 16px 0 0) !important;
 }
 
 .blog-grid .blog-card:hover .blog-card-image img {
   transform: scale(1.04);
 }
 
+/* Enforce top-only corner rounding for images in all states (normal/hover/focus/active)
+   with high specificity and !important so Brave/Chromium won't render rounded bottoms. */
+.blog-grid .blog-card .blog-card-image img,
+.blog-grid .blog-card:hover .blog-card-image img,
+.blog-grid .blog-card:focus .blog-card-image img,
+.blog-grid .blog-card:active .blog-card-image img,
+.page-blog .blog-card .blog-card-image img,
+.page-blog .blog-card:hover .blog-card-image img,
+.page-blog .blog-card:focus .blog-card-image img,
+.page-blog .blog-card:active .blog-card-image img {
+  border-radius: 16px 16px 0 0 !important;
+  -webkit-clip-path: inset(0 0 0 0 round 16px 16px 0 0) !important;
+  clip-path: inset(0 0 0 0 round 16px 16px 0 0) !important;
+}
+
 .blog-grid .blog-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 14px 36px rgba(10, 46, 92, 0.12);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(10, 46, 92, 0.14);
 }
 
 .blog-grid .blog-card:active {
   transform: translateY(-2px) scale(0.998);
-  box-shadow: 0 6px 18px rgba(10, 46, 92, 0.1);
+  box-shadow: 0 8px 18px rgba(10, 46, 92, 0.08);
 }
 
 .blog-grid .blog-card:focus {
   outline: none;
-  box-shadow: 0 14px 36px rgba(10, 46, 92, 0.12),
-    0 0 0 4px rgba(56, 189, 248, 0.12);
-  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 8px 20px rgba(10, 46, 92, 0.06),
+    0 0 0 4px rgba(56, 189, 248, 0.08);
+  transform: translateY(-4px) scale(1.003);
 }
 
 .blog-grid .blog-card-content {
@@ -174,10 +196,10 @@ body {
   display: inline-block;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid #0a2e5c;
-  background: #eef6ff;
-  color: #0a2e5c;
-  font-weight: 700;
+  border: none;
+  background: #f6f7fa; /* soft neutral pill background */
+  color: #475569; /* muted slate text */
+  font-weight: 600;
   font-size: 0.875rem;
   margin-right: 10px;
 }
@@ -190,14 +212,165 @@ body {
 }
 
 @media (max-width: 700px) {
-  /* on smaller screens, make cards ~50% width so a second card peeks in */
+  /* on smaller screens, make cards narrower so a second card peeks in,
+     and reduce image/padding so cards fit better visually */
   .blog-grid {
     gap: 16px;
+    padding: 8px 16px 12px 16px; /* tighter horizontal padding so cards fill more of the viewport */
   }
 
   .blog-grid .blog-card {
-    flex: 0 0 calc(70% - 12px);
-    width: calc(70% - 12px);
+    flex: 0 0 calc(92% - 12px);
+    width: calc(92% - 12px);
+  }
+
+  .blog-grid .blog-card-image {
+    height: 180px; /* slightly shorter images on small screens */
+  }
+
+  .blog-grid .blog-card-content {
+    padding: 16px;
+  }
+
+  .blog-grid .blog-card-content h3 {
+    font-size: 1.2rem; /* slightly larger on small screens */
+    line-height: 1.2;
+  }
+  /* Truncate title to one line with ellipsis on small screens */
+  .blog-grid .blog-card-content h3,
+  .blog-grid .blog-card-content h3 a {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* reduce meta typography on small screens */
+  .blog-grid .post-meta .post-category {
+    font-size: 0.78rem;
+    padding: 5px 8px;
+  }
+  .blog-grid .post-meta .post-date {
+    font-size: 0.8rem;
+  }
+
+  /* Make the blog listing page full-bleed on small screens: remove
+     horizontal gutters and allow each post card to span the viewport. */
+  .page-blog .container,
+  .page-blog .blog-grid-wrapper,
+  .page-blog .blog-grid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .page-blog .blog-card {
+    /* add a small horizontal gutter so content doesn't touch viewport edges */
+    width: calc(100vw - 24px) !important; /* 12px gutter each side */
+    max-width: none !important;
+    margin-left: calc(50% - 50vw + 12px) !important;
+    margin-right: calc(50% - 50vw + 12px) !important;
+    border-radius: 16px !important; /* soft rounded corners */
+    background: #ffffff !important; /* ensure card sits above page bg */
+    overflow: visible !important; /* let image-wrapper control clipping */
+    box-shadow: none !important;
+    border: 1px solid rgba(10, 46, 92, 0.06) !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* keep inner content padded so text doesn't hit edges */
+  .page-blog .blog-card-content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Ensure image wrapper clips only its top corners so image bottom remains square */
+.page-blog .blog-card-image {
+  overflow: hidden !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Ensure card images respect the card's rounded corners on small screens */
+@media (max-width: 700px) {
+  .page-blog .blog-card-image img {
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    display: block;
+  }
+}
+
+/* Force image bottom corners to remain square in all states (hover/focus/active)
+   across homepage snippets and blog listing. This overrides any other rules. */
+.blog-grid .blog-card-image img,
+.blog-grid .blog-card:hover .blog-card-image img,
+.page-blog .blog-card-image img,
+.page-blog .blog-card:hover .blog-card-image img,
+.page-blog .blog-card:active .blog-card-image img,
+.blog-grid .blog-card:active .blog-card-image img {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+@media (max-width: 480px) {
+  /* Very small phones: make cards fuller width and images shorter */
+  .blog-grid {
+    gap: 12px;
+    padding: 8px 8px;
+  }
+  .blog-grid .blog-card {
+    flex: 0 0 calc(98% - 12px);
+    width: calc(98% - 12px);
+  }
+  .blog-grid .blog-card-image {
+    height: 160px;
+  }
+  .blog-grid .blog-card-content {
+    padding: 12px;
+  }
+  .blog-grid .blog-card-content h3 {
+    font-size: 1.02rem; /* slightly larger on very small screens */
+  }
+  .blog-grid .post-meta .post-category {
+    font-size: 0.75rem;
+    padding: 4px 7px;
+  }
+  .blog-grid .post-meta .post-date {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Show date on its own row with a small calendar icon on mobile */
+  .blog-grid .post-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .blog-grid .post-meta .post-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+    font-size: 0.82rem;
+  }
+
+  .blog-grid .post-meta .post-date::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'><path d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM5 20V9h14v11H5z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 6px;
   }
 }
 
@@ -347,17 +520,63 @@ body {
   background-clip: unset;
   -webkit-text-fill-color: unset;
 }
+
+/* Make blog page cards fill the available content width so each post
+   occupies the full body/container width on the blog listing page. */
+.page-blog .blog-card {
+  max-width: none;
+  width: 100%;
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+}
+
+/* Give the overall blog listing a gentle horizontal margin on larger
+   screens so content doesn't stick to the viewport edge. Mobile
+   full-bleed behavior (<=700px) is preserved by the earlier media query. */
+.page-blog {
+  padding-left: 24px;
+  padding-right: 24px;
+}
 @media (max-width: 700px) {
   .page-blog .blog-grid {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     gap: 20px;
   }
+  /* Reduce side padding and widen blog cards on small screens */
+  .blog-grid {
+    /* tighter page gutters */
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
   .page-blog .blog-card {
-    max-width: 98vw;
+    /* Make blog cards wider on small screens (4px gutter each side) */
+    max-width: calc(100vw - 8px);
+    width: calc(100% - 8px);
+    margin: 0 auto;
   }
   .page-blog .blog-card-content {
-    padding: 14px;
+    padding: 8px;
+  }
+
+  /* Reduce title & excerpt sizing on small screens for better fit */
+  .page-blog .blog-card-content h3 {
+    font-size: 0.95rem; /* slightly smaller title for mobile */
+    line-height: 1.16;
+    margin-bottom: 8px;
+  }
+  .page-blog .blog-card-content p {
+    font-size: 0.82rem; /* slightly smaller excerpt */
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: #4b5563;
+  }
+  .page-blog .post-meta {
+    font-size: 0.85rem;
   }
 }
 
@@ -436,8 +655,13 @@ body {
   margin-bottom: 8px;
 }
 .post-category {
-  font-weight: 700;
-  color: #0a2e5c;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f6f7fa;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.875rem;
 }
 .post-date {
   color: #6b7280;
@@ -1164,6 +1388,19 @@ h2 {
 .hero .btn-primary:hover {
   background: #0ea5e9;
 }
+.hero .btn-primary {
+  /* keep visual style but constrain width on larger screens */
+  max-width: 360px;
+  width: auto;
+  padding: 12px 28px;
+}
+
+@media (min-width: 641px) {
+  .hero-cta .btn {
+    width: auto; /* prevent hero button stretching full width on desktop */
+    max-width: 360px;
+  }
+}
 .hero .btn-ghost {
   background: transparent;
   color: #ffffff;
@@ -1350,6 +1587,13 @@ h2 {
   font-size: 18px;
   line-height: 1.6;
   max-width: 800px;
+}
+
+@media (max-width: 640px) {
+  .intro-copy {
+    font-size: 15px; /* reduced for mobile readability and fit */
+    line-height: 1.5;
+  }
 }
 /* Brands section */
 .brands-section {
@@ -1569,6 +1813,12 @@ h2 {
       max-width: 200px;
     }
 
+    /* Allow decorative circle to peek on stacked mobile blocks */
+    .histogram-block .decor {
+      bottom: -6px;
+      right: -8px;
+    }
+
     .histogram-block .decor {
       bottom: 0;
       right: 0;
@@ -1603,10 +1853,11 @@ h2 {
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 20px;
-    text-align: right;
-    overflow: hidden;
+    justify-content: center;
+    /* increase right padding so text doesn't overlap the decorative circle */
+    padding: 0 100px 0 20px; /* top/right/bottom/left */
+    text-align: center;
+    overflow: visible; /* allow decorative shape to peek outside on mobile */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: white;
   }
@@ -1672,20 +1923,22 @@ h2 {
 @media (max-width: 640px) {
   .stacked-columns {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 36px;
-    margin: 0 0 24px 0;
-    padding: 32px 0 90px 0;
+    /* full viewport width but keep internal 10px gutters; use border-box so
+       padding doesn't cause overflow */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px 10px 10px; /* 10px side padding as requested */
+    margin: 0; /* full-bleed row on mobile */
   }
   .stack {
     position: relative;
-    width: 90vw;
-    max-width: 340px;
+
+    max-width: none; /* fill the `.stacked-columns` width */
     min-width: 0;
-    height: 220px;
-    margin-bottom: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 500px; /* increased height for each card */
+    margin-bottom: 48px; /* reduced vertical spacing between stacks on mobile */
     box-sizing: border-box;
     overflow: visible;
     word-break: break-word;
@@ -1694,23 +1947,23 @@ h2 {
   .layer {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 250px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
   }
   .layer.top {
     z-index: 3;
-    padding: 18px 14px; /* slightly more left/right padding on mobile */
+    padding: 16px 14px; /* comfortable padding */
     min-width: 0;
     overflow: visible;
     word-break: break-word;
     overflow-wrap: break-word;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertically center on mobile too */
+    justify-content: center; /* vertically center on mobile */
     align-items: flex-start;
-    height: 100%;
+
     background-clip: padding-box;
     top: 0; /* ensure top layer sits at top of stack */
     left: 0;
@@ -1719,8 +1972,20 @@ h2 {
     font-size: 17px;
   }
   .layer.top p {
-    font-size: 16px;
-    margin-bottom: 16px;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  /* Reduce the visual offset of the middle & bottom layers on mobile so the
+     overall stack doesn't extend too far horizontally. These override the
+     larger desktop offsets defined below. Kept small so the peek is subtle. */
+  .stack .layer.middle {
+    top: 8px;
+    left: 6px;
+  }
+  .stack .layer.bottom {
+    top: 16px;
+    left: 12px;
   }
 }
 
@@ -1746,6 +2011,37 @@ h2 {
 .stack:nth-child(1) .layer.top {
   background: #0a2e5c; /* dark navy */
   color: #fff;
+}
+/* --------------------------------------------------------------------------
+   Overrides: Ensure blog listing cards display as boxed cards on the blog page
+   This intentionally lives at the end of main.css to take precedence over
+   previous rules that added stronger shadows or changed radius on mobile.
+   -------------------------------------------------------------------------- */
+.page-blog .blog-card {
+  border: 1px solid rgba(10, 46, 92, 0.06) !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+  overflow: visible !important;
+  background: #ffffff !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 18px 0 !important;
+}
+.page-blog .blog-card-image,
+.page-blog .blog-card-image img {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  display: block !important;
+}
+@media (max-width: 1024px) {
+  .page-blog .blog-card {
+    border-radius: 16px !important;
+    box-shadow: none !important;
+  }
+  .page-blog .blog-card-image img {
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+  }
 }
 .stack:nth-child(1) .layer.middle {
   background: #0083d6; /* cyan blue */
@@ -1908,6 +2204,61 @@ h2 {
 }
 
 @media (max-width: 640px) {
+  .stack {
+    transform-origin: top center;
+    transform: scale(0.84); /* tune between 0.90 - 0.98 as needed */
+    /* ensure transforms don't cause blurry text on some devices */
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    will-change: transform;
+    height: 520px;
+  }
+  /* Mobile: allow stack layers to grow with content */
+  .stack {
+    box-sizing: border-box;
+    padding: 0 10px; /* optional container side padding */
+  }
+
+  /* Replace fixed height with auto + sensible min-height */
+  .stack .layer {
+    width: 100%;
+    height: auto; /* allow content-driven height */
+    min-height: 200px; /* fallback/visual baseline — tune as needed */
+    border-radius: 12px;
+    box-sizing: border-box; /* include padding in height calculation */
+    padding: 18px; /* comfortable internal spacing */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: visible; /* ensure decorative shapes/shadows aren't clipped */
+  }
+
+  /* Top layer: keep vertical layout and spacing, allow content to grow */
+  .stack .layer.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* or center if you want vertical centering */
+    gap: 8px;
+    padding: 20px; /* more breathing room for text */
+    min-height: 220px; /* ensure a baseline card size */
+  }
+
+  /* Middle/bottom layers: keep their small visual offset but don't fix their height */
+  .stack .layer.middle {
+    top: 8px; /* smaller peek on mobile */
+    left: 6px;
+    min-height: 230px;
+  }
+
+  .stack .layer.bottom {
+    top: 16px;
+    left: 12px;
+    min-height: 240px;
+  }
+
+  /* Optional: reduce h3/p margin inside layers to avoid pushing height unnecessarily */
+  .stack .layer.top h3,
+  .stack .layer.top p {
+    margin: 6px 0;
+  }
   .why-choose-echo {
     margin: 80px auto 60px;
   }
@@ -2104,6 +2455,8 @@ h2 {
   flex: 0 0 360px;
   width: 360px;
 }
+
+/* Testimonials show full text by default (no visual clamping) */
 .testimonials-nav {
   position: absolute;
   top: 50%;
@@ -2171,6 +2524,8 @@ h2 {
     top: 48%; /* slight vertical adjustment for mobile */
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   }
+  /* On small screens, show an even shorter testimonial snippet */
+  /* No clamping on mobile — show full testimonial text */
 }
 
 @media (max-width: 980px) {
@@ -2605,7 +2960,7 @@ blockquote cite {
     font-size: 1.4rem;
   }
   .cta-inner p {
-    font-size: 1rem;
+    font-size: 0.92rem; /* slightly smaller on mobile for better fit */
   }
   .cta-inner .btn-primary {
     font-size: 1rem;
@@ -2689,6 +3044,49 @@ blockquote cite {
   border-top: 1px solid var(--border);
   padding: 20px 0;
   background: #ffffff;
+}
+
+/* Make footer full-bleed and dark on the blog listing page */
+.page-blog .site-footer {
+  background: #000000 !important;
+  color: #ffffff !important;
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  border-top: none !important;
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+.page-blog .site-footer .footer-inner {
+  color: #ffffff !important;
+}
+.page-blog .site-footer a,
+.page-blog .site-footer .footer-links a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.page-blog .site-footer .footer-links a:hover {
+  color: #ffffff !important;
+}
+
+/* Reduce footer typography slightly on small screens for better fit */
+@media (max-width: 640px) {
+  .site-footer {
+    font-size: 14px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .site-footer .footer-inner {
+    font-size: 14px;
+  }
+  .site-footer .footer-links a,
+  .site-footer .footer-socials a {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .site-footer .footer-socials a img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .footer-inner {
@@ -3236,6 +3634,22 @@ blockquote cite {
     margin-bottom: 18px;
   }
 
+  /* Truncate service section paragraphs to 4 lines on mobile with ellipsis */
+  .branding-content p,
+  .content-mapping-content p,
+  .photoshoot-content p,
+  .social-media-content p,
+  .media-content p,
+  .corporate-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4; /* limit to 4 lines */
+    line-clamp: 4; /* standard property for compatibility */
+    max-height: calc(1.55em * 4); /* fallback for non-webkit browsers */
+  }
+
   .branding-image img,
   .content-mapping-image img,
   .photoshoot-image img,
@@ -3257,5 +3671,143 @@ blockquote cite {
     background: #000 !important;
     color: #fff !important;
     border-color: transparent !important;
+  }
+
+  /* Reduce width of service "Learn More" buttons on mobile and center them
+     (override the general full-width mobile button rule) */
+  .branding-content .btn,
+  .content-mapping-content .btn,
+  .photoshoot-content .btn,
+  .social-media-content .btn,
+  .media-content .btn,
+  .corporate-content .btn {
+    width: auto !important;
+    max-width: 280px !important; /* limit visual width */
+    display: inline-flex !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 10px 18px !important; /* keep touch-friendly size */
+    box-sizing: border-box !important;
+  }
+}
+
+/* Consolidated mobile UX improvements: touch targets, spacing, focus, and layout */
+@media (max-width: 640px) {
+  /* Slightly reduce container side padding for smaller devices */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Make primary buttons larger and full-width for easier tapping */
+  .btn,
+  .btn-primary,
+  .btn-lg {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+    box-sizing: border-box;
+    min-height: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  /* Keep CTA in the main call-to-action block smaller and centered */
+  .cta .btn,
+  .cta .btn-primary,
+  .cta .btn-lg {
+    width: auto;
+    max-width: 260px;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 18px;
+  }
+
+  /* Nav list: make items full width and increase tap area */
+  .nav-list.show {
+    padding: 8px 12px;
+  }
+  .nav-list.show a {
+    width: 100%;
+    display: block;
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  /* Hero adjustments for small screens */
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.05;
+  }
+
+  /* Ensure stacked columns collapse cleanly with breathing room */
+  .stacked-columns {
+    gap: 28px;
+    margin: 20px 0;
+    padding: 16px 0;
+  }
+  .stack {
+    padding: 14px 12px;
+    min-height: 160px;
+  }
+
+  /* Blog grid: ensure cards span width with comfortable side padding */
+  .blog-grid-wrapper,
+  .blog-grid {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .blog-grid .blog-card {
+    flex: 0 0 calc(96% - 12px);
+    width: calc(96% - 12px);
+    margin: 0 6px;
+  }
+
+  /* Testimonials: keep peek but increase nav tappable area */
+  .testimonials-track {
+    gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .testimonials-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Images and media should be flexible and centered */
+  .branding-image img,
+  .content-mapping-image img,
+  .photoshoot-image img,
+  .social-media-image img,
+  .media-image img,
+  .corporate-image img,
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Improve keyboard focus visibility for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  .btn:focus-visible {
+    outline: 3px solid rgba(11, 59, 140, 0.16);
+    outline-offset: 3px;
+  }
+
+  /* Reduce text sizes slightly for long paragraphs on tiny screens */
+  p {
+    font-size: 15px;
   }
 }
