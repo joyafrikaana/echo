@@ -836,7 +836,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 72px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -1769,9 +1769,10 @@ h2 {
 }
 
 .block-1 {
-  height: 250px;
-  background: #96c1f7; /* light blue */
-  color: black; /* better contrast on light bg */
+  height: 48px;
+  max-height: 48px;
+  width: auto;
+  display: block;
 }
 
 /* Decorative image */

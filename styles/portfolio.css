@@ -172,6 +172,48 @@
   }
 }
 
+/* Additional tablet/mobile tweaks to reduce head-cropping */
+@media (max-width: 1024px) {
+  .photo-grid {
+    /* slightly taller rows on tablet to reduce top-cropping of faces */
+    grid-auto-rows: 220px;
+  }
+  .photo-large img,
+  .photo-tall img {
+    object-position: center 32%;
+  }
+  .face-center img {
+    object-position: center 24% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-grid {
+    /* give more vertical room on small screens */
+    grid-auto-rows: 260px;
+  }
+  /* Nudge general images down so faces sit in-frame */
+  .photo-item img {
+    object-position: center 36%;
+  }
+  .face-center img {
+    object-position: center 30% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-grid {
+    /* increase mobile tile height so heads aren't cropped on narrow screens */
+    grid-auto-rows: 320px;
+  }
+  .photo-item img {
+    object-position: center 40%;
+  }
+  .face-center img {
+    object-position: center 30% !important;
+  }
+}
+
 /* Portfolio Tiles (featured projects) */
 .portfolio {
   display: grid;

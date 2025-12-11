@@ -1,0 +1,836 @@
+/* ECHOsystem page styles - scoped under .page-echosystem */
+/* Tile-style badges: center icon above label, pastel card backgrounds */
+.page-echosystem .who-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 16px;
+  min-height: 110px;
+  text-align: center;
+  border: 1px solid rgba(11, 59, 140, 0.04);
+  box-shadow: 0 10px 30px rgba(11, 59, 140, 0.04);
+  transform-origin: center;
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+}
+.page-echosystem .who-badge__icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 59, 140, 0.06);
+  color: #0b3b8c;
+  box-shadow: 0 8px 20px rgba(11, 59, 140, 0.05) inset;
+}
+.page-echosystem .who-badge__label {
+  color: #072243;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+/* Pastel backgrounds and stronger icon accents per badge to match site palette */
+.page-echosystem .who-badge:nth-child(1) {
+  background: linear-gradient(180deg, #eaf6ff, #f8fbff);
+}
+.page-echosystem .who-badge:nth-child(1) .who-badge__icon {
+  background: #0b3b8c;
+  color: #fff;
+}
+.page-echosystem .who-badge:nth-child(2) {
+  background: linear-gradient(180deg, #eef6ff, #f7fbff);
+}
+.page-echosystem .who-badge:nth-child(2) .who-badge__icon {
+  background: #0b6bd6;
+  color: #fff;
+}
+.page-echosystem .who-badge:nth-child(3) {
+  background: linear-gradient(180deg, #f3fff6, #f0fff9);
+}
+.page-echosystem .who-badge:nth-child(3) .who-badge__icon {
+  background: #00a36c;
+  color: #fff;
+}
+.page-echosystem .who-badge:nth-child(4) {
+  background: linear-gradient(180deg, #f6f5ff, #fbfaff);
+}
+.page-echosystem .who-badge:nth-child(4) .who-badge__icon {
+  background: #6b46c1;
+  color: #fff;
+}
+.page-echosystem .who-badge:nth-child(5) {
+  background: linear-gradient(180deg, #fff7f3, #fffaf7);
+}
+.page-echosystem .who-badge:nth-child(5) .who-badge__icon {
+  background: #ff6b9f;
+  color: #fff;
+}
+.page-echosystem .who-badge:nth-child(6) {
+  background: linear-gradient(180deg, #fff9ec, #fffdf7);
+}
+.page-echosystem .who-badge:nth-child(6) .who-badge__icon {
+  background: #f59e0b;
+  color: #fff;
+}
+
+/* subtle fade-up entrance animation with stagger */
+@keyframes whoFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.page-echosystem .who-badge:nth-child(1) {
+  animation: whoFadeUp 420ms ease forwards 0ms;
+}
+.page-echosystem .who-badge:nth-child(2) {
+  animation: whoFadeUp 420ms ease forwards 80ms;
+}
+.page-echosystem .who-badge:nth-child(3) {
+  animation: whoFadeUp 420ms ease forwards 160ms;
+}
+.page-echosystem .who-badge:nth-child(4) {
+  animation: whoFadeUp 420ms ease forwards 240ms;
+}
+.page-echosystem .who-badge:nth-child(5) {
+  animation: whoFadeUp 420ms ease forwards 320ms;
+}
+.page-echosystem .who-badge:nth-child(6) {
+  animation: whoFadeUp 420ms ease forwards 400ms;
+}
+
+/* Hover lift for desktop */
+@media (prefers-reduced-motion: no-preference) {
+  .page-echosystem .who-badge:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(11, 59, 140, 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-echosystem .who-badge,
+  .page-echosystem .who-badge * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .page-echosystem .who-badge {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-echosystem h1 {
+  font-size: clamp(36px, 6vw, 96px);
+  line-height: 1.02;
+  margin: 6px 0 12px;
+  font-weight: 800;
+}
+.page-echosystem .subhead {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(16px, 1.8vw, 20px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-echosystem .btn-primary {
+  background: linear-gradient(90deg, #0b3b8c, #113e6e);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 28px;
+  display: inline-block;
+  margin-top: 18px;
+}
+
+/* Cards grid */
+.page-echosystem .grid.three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.page-echosystem .card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(11, 59, 140, 0.06);
+  border: 1px solid rgba(11, 59, 140, 0.04);
+  color: #0b2e5c;
+}
+.page-echosystem .card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.page-echosystem .section-title {
+  text-align: center;
+  margin-bottom: 26px;
+  color: #082a62;
+}
+
+/* Add extra spacing around page sections for better separation */
+.page-echosystem section.section {
+  margin-top: 28px;
+  margin-bottom: 36px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.page-echosystem .lead {
+  list-style: disc;
+  padding-left: 20px;
+  color: #0b2e5c;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .page-echosystem .grid.three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .page-echosystem .grid.three {
+    /* Who Can Join section */
+    .page-echosystem .who-join-section {
+      padding: 36px 0 56px;
+    }
+    .page-echosystem .who-title {
+      text-align: center;
+      font-size: clamp(18px, 3.2vw, 26px);
+      margin-bottom: 18px;
+      color: #082a62;
+      font-weight: 800;
+    }
+    .page-echosystem .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+      padding: 0 8px;
+      list-style: none;
+    }
+    .page-echosystem .who-badge {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      border: 1px solid rgba(11, 59, 140, 0.06);
+      box-shadow: 0 6px 18px rgba(11, 59, 140, 0.04);
+    }
+    .page-echosystem .who-badge__icon {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #e9f5ff, #e6f0ff);
+      color: #0b3b8c;
+    }
+    .page-echosystem .who-badge__label {
+      color: #102a48;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* mobile -> small screens: 1-2 columns */
+    @media (min-width: 520px) {
+      .page-echosystem .who-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+    }
+
+    /* tablet -> show 3 columns */
+    @media (min-width: 900px) {
+      .page-echosystem .who-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    /* desktop -> 4 columns if space permits */
+    @media (min-width: 1200px) {
+      .page-echosystem .who-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .page-echosystem .who-badge {
+        padding: 12px 16px;
+      }
+      .page-echosystem .who-badge:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(11, 59, 140, 0.08);
+      }
+      .page-echosystem .who-badge {
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+    }
+
+    .page-echosystem .who-callout {
+      margin: 18px auto 0;
+      max-width: 920px;
+      background: linear-gradient(
+        90deg,
+        rgba(11, 59, 140, 0.04),
+        rgba(3, 7, 18, 0.02)
+      );
+      border-left: 4px solid #0b3b8c;
+      padding: 14px 18px;
+      border-radius: 8px;
+      color: #0b2e5c;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(11, 59, 140, 0.04);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .page-echosystem .who-badge {
+        padding: 10px 12px;
+      }
+      .page-echosystem .who-badge__icon {
+        width: 32px;
+        height: 32px;
+      }
+      .page-echosystem .who-badge__label {
+        font-size: 13px;
+      }
+      .page-echosystem .who-callout {
+        padding: 12px;
+        font-size: 14px;
+      }
+    }
+    grid-template-columns: 1fr;
+  }
+  .page-echosystem h1 {
+    font-size: 40px;
+  }
+  .page-echosystem .hero {
+    padding: 80px 0;
+  }
+}
+
+/* small utility to center hero content vertically on taller screens */
+.page-echosystem .hero .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+}
+
+/* keep footer styling consistent */
+.page-echosystem footer.site-footer.full-footer {
+  margin-top: 48px;
+}
+
+/* Welcome / Intro section (About-style hero copied for ECHOsystem) */
+.page-echosystem .welcome-section {
+  padding: 56px 0;
+}
+.page-echosystem .welcome-inner {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.page-echosystem .intro-media {
+  flex: 0 0 36%;
+  max-width: 420px;
+}
+.page-echosystem .intro-media img {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.35);
+  display: block;
+}
+.page-echosystem .welcome-content {
+  flex: 1 1 64%;
+  color: #072243;
+}
+.page-echosystem .welcome-content h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 3.8vw, 36px);
+  color: #0b3b8c;
+}
+.page-echosystem .welcome-content h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #0b3b8c;
+  font-weight: 700;
+}
+.page-echosystem .welcome-stats {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.page-echosystem .welcome-stats .stat {
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  padding: 12px 16px;
+  border-radius: 10px;
+  min-width: 110px;
+  box-shadow: 0 6px 18px rgba(11, 59, 140, 0.04);
+  text-align: center;
+}
+.page-echosystem .stat-number {
+  font-weight: 800;
+  font-size: 20px;
+  color: #0b3b8c;
+}
+.page-echosystem .stat-label {
+  font-size: 13px;
+  color: #415f82;
+  margin-top: 6px;
+}
+
+@media (max-width: 980px) {
+  .page-echosystem .welcome-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .page-echosystem .intro-media {
+    max-width: 100%;
+    flex-basis: auto;
+    order: -1;
+  }
+}
+
+/* End ECHOsystem styles */
+
+.how-section {
+  margin: 0 20px;
+}
+
+/* Process flow styles */
+.page-echosystem .process-flow {
+  position: relative;
+  margin: 32px 0 12px;
+  padding: 0 20px; /* ensure spacing on very narrow viewports */
+}
+.page-echosystem .process-connector {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34px;
+  height: 160px;
+  width: 100%;
+  pointer-events: none;
+  display: block;
+}
+.page-echosystem .process-flow .steps {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  position: relative; /* enables absolute positioning for vertical connector */
+  /* widen so all four steps fit and the connector reaches the last card */
+  max-width: 1320px;
+  margin: 0 auto;
+  justify-content: center;
+  z-index: 2;
+  padding: 0 24px; /* keep safe inner gutter so cards don't touch viewport */
+  overflow: visible;
+}
+.page-echosystem .process-step {
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(11, 59, 140, 0.06);
+  border: 1px solid rgba(11, 59, 140, 0.04);
+  flex: 0 0 300px;
+  max-width: 340px;
+  position: relative;
+  z-index: 2;
+}
+.page-echosystem .process-step .icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.page-echosystem .process-step .icon svg {
+  display: block;
+}
+.page-echosystem .step-title {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: #0b3b8c;
+}
+.page-echosystem .step-desc {
+  margin: 0;
+  color: #415f82;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Desktop: show horizontal steps and connector */
+@media (min-width: 981px) {
+  .page-echosystem .process-connector {
+    display: block;
+  }
+  .page-echosystem .process-step {
+    text-align: left;
+  }
+}
+
+/* Tablet/mobile: stack vertically and show vertical connectors */
+@media (max-width: 980px) {
+  /* on mobile: hide the horizontal connector and enable the vertical connector */
+  .page-echosystem .process-connector:not(.process-connector--v) {
+    display: none !important;
+  }
+  .page-echosystem .process-connector.process-connector--v {
+    display: block !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px; /* start below first card icon */
+    bottom: 40px; /* end above last card bottom */
+    width: 60px;
+    height: auto;
+    z-index: 0;
+  }
+  .page-echosystem .process-flow .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px; /* larger vertical gap so the wavy connector shows clearly */
+    padding: 0 16px; /* comfortable outer padding */
+    position: relative; /* ensure vertical connector can be positioned */
+  }
+  .page-echosystem .process-step {
+    display: block;
+    padding: 18px 18px;
+    flex: none; /* allow full-width stacking */
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* above the connector */
+    background: linear-gradient(180deg, #ffffff, #f8fbff);
+  }
+  .page-echosystem .process-step + .process-step {
+    margin-top: 0; /* gap handles spacing */
+  }
+  /* hide the old tick marker because the vertical svg will connect steps */
+  .page-echosystem .process-step::before {
+    display: none;
+  }
+  /* center the section title on small screens and give extra spacing */
+  .page-echosystem .section-title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding: 0 12px;
+    margin-bottom: 32px;
+  }
+}
+
+/* Tweak icon backgrounds for each step to feel illustrative */
+.page-echosystem .process-step:nth-child(1) .icon {
+  background: linear-gradient(180deg, #eaf6ff, #d5f0ff);
+}
+.page-echosystem .process-step:nth-child(2) .icon {
+  background: linear-gradient(180deg, #f0f8ff, #e6f3ff);
+}
+.page-echosystem .process-step:nth-child(3) .icon {
+  background: linear-gradient(180deg, #f3fff6, #e9fff0);
+}
+.page-echosystem .process-step:nth-child(4) .icon {
+  background: linear-gradient(180deg, #fff7ec, #fff0dd);
+}
+
+/* Ensure the process-flow card fits nicely on narrower containers */
+.page-echosystem .process-flow .process-step {
+  min-height: 180px;
+}
+
+.page-echosystem .process-connector {
+  z-index: 1;
+}
+
+.page-echosystem .process-connector path {
+  stroke-linecap: round;
+  stroke-width: 6;
+  stroke-dasharray: 10 8;
+  filter: drop-shadow(0 6px 14px rgba(11, 59, 140, 0.06));
+  stroke: #0b3b8c; /* bold solid color, remove translucent gradient */
+}
+
+/* vertical connector defaults (hidden on desktop). It will be absolutely positioned
+   and centered above the stacked steps on mobile. The SVG itself uses a tall
+   viewBox so it can stretch to match container height; `preserveAspectRatio=none`
+   allows it to scale cleanly. */
+.page-echosystem .process-connector.process-connector--v {
+  display: none; /* enabled in mobile media query */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 200px; /* wider so wavy path can curve left/right visibly */
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* behind the cards */
+}
+.page-echosystem .process-connector.process-connector--v path {
+  stroke: #0b3b8c;
+  stroke-width: 8;
+  stroke-dasharray: 0 16; /* 0 dash + round linecap = perfect circles */
+  stroke-linecap: round;
+  fill: none;
+  filter: drop-shadow(0 6px 14px rgba(11, 59, 140, 0.06));
+}
+
+/* ensure horizontal connector is always rendered in solid bold color on desktop */
+@media (min-width: 981px) {
+  .page-echosystem .process-connector {
+    display: block;
+  }
+  .page-echosystem .process-connector.process-connector--v {
+    display: none;
+  }
+}
+
+/* small screens: more readable text */
+@media (max-width: 480px) {
+  .page-echosystem .step-title {
+    font-size: 16px;
+  }
+  .page-echosystem .step-desc {
+    font-size: 14px;
+  }
+}
+
+/* End process flow styles */
+
+/* Why Join the ECHOsystem - premium card grid */
+.page-echosystem .why-join-section {
+  padding: 40px 0 56px;
+}
+.page-echosystem .why-title {
+  text-align: center;
+  font-size: clamp(20px, 3.2vw, 28px);
+  margin: 0 0 20px;
+  color: #082a62;
+  font-weight: 800;
+}
+
+/* Match the Who title to the Why title: centered, navy, same sizing */
+.page-echosystem .who-title {
+  text-align: center;
+  font-size: clamp(20px, 3.2vw, 28px);
+  margin: 40px 0 20px; /* increase top margin for clearer separation */
+  color: #082a62;
+  font-weight: 800;
+}
+
+/* Ensure section, why and who titles share the same sizing and weight */
+.page-echosystem .section-title,
+.page-echosystem .why-title,
+.page-echosystem .who-title {
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: 800;
+  color: #082a62;
+}
+.page-echosystem .why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin: 20px auto;
+  max-width: 1100px;
+}
+.page-echosystem .why-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 30px rgba(11, 59, 140, 0.06);
+  border: 1px solid rgba(11, 59, 140, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.page-echosystem .why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(11, 59, 140, 0.1);
+}
+.page-echosystem .why-icon {
+  flex: 0 0 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #3f92f1, #0857b7);
+  box-shadow: 0 6px 18px rgba(11, 59, 140, 0.08);
+}
+.page-echosystem .why-icon svg {
+  display: block;
+}
+.page-echosystem .why-copy {
+  color: #102a48;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
+}
+.page-echosystem .why-feature {
+  margin: 28px auto 0;
+  max-width: 920px;
+  background: linear-gradient(
+    90deg,
+    rgba(113, 155, 228, 0.04),
+    rgba(109, 139, 222, 0.02)
+  );
+  border-left: 4px solid #0b3b8c;
+  padding: 18px 20px;
+  border-radius: 10px;
+  color: #0b2e5c;
+  font-size: 16px;
+  box-shadow: 0 8px 24px rgba(11, 59, 140, 0.04);
+}
+
+@media (max-width: 640px) {
+  .page-echosystem .why-grid {
+    gap: 12px;
+  }
+  .page-echosystem .why-card {
+    padding: 12px;
+  }
+  .page-echosystem .why-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .page-echosystem .why-copy {
+    font-size: 14px;
+  }
+  .page-echosystem .why-feature {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Central card wrapper for "Who Can Join" badges; always two columns */
+.page-echosystem .who-card-wrapper {
+  max-width: 760px;
+  margin: 0 auto 18px;
+  /* pastel blue wrapper to match design */
+  background: linear-gradient(180deg, #fafcfd, #f8f9f9);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
+  border: 1px solid rgba(11, 59, 140, 0.04);
+  will-change: transform;
+  transform-origin: center top;
+  animation: whoWrapperBounce 4s ease-in-out infinite;
+}
+
+.page-echosystem .who-card-wrapper .who-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-echosystem .who-card-wrapper .who-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  /* unified pastel-blue badge background to match attached image */
+  background: linear-gradient(180deg, #eaf6ff, #e0f3ff);
+  border-radius: 12px;
+  padding: 18px 14px;
+  min-height: 110px;
+  text-align: center;
+}
+
+/* ensure each badge fills its grid cell so all badges render at the same width */
+.page-echosystem .who-card-wrapper .who-badge {
+  width: 100%;
+  box-sizing: border-box;
+  align-self: stretch;
+}
+
+.page-echosystem .who-card-wrapper .who-badge__label {
+  display: block;
+  text-align: center;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+/* Ensure icons keep the larger tile sizing inside the wrapper */
+.page-echosystem .who-card-wrapper .who-badge__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Keep two columns even on very small viewports (user requested 2-per-row)
+   Cards will naturally shrink; adjust spacing for narrow screens */
+@media (max-width: 420px) {
+  .page-echosystem .who-card-wrapper .who-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* reduce gap so each pill gets more width */
+  }
+  .page-echosystem .who-card-wrapper .who-badge {
+    padding: 14px 8px; /* slight horizontal shrink, taller vertical to appear wider */
+    min-height: 96px;
+  }
+  .page-echosystem .who-card-wrapper .who-badge__label {
+    font-size: 13px;
+  }
+}
+
+/* reduce outer padding of the central wrapper on small viewports so badges can be wider */
+@media (max-width: 520px) {
+  .page-echosystem .who-card-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* gentle up-and-down bounce for the whole badge card wrapper */
+@keyframes whoWrapperBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .page-echosystem .who-card-wrapper {
+    animation: none !important;
+  }
+}
