@@ -371,7 +371,7 @@
 .page-echosystem .welcome-content h3 {
   margin: 0 0 12px;
   font-size: 18px;
-  color: #0b3b8c;
+  color: #38bdf8; /* updated to match requested accent */
   font-weight: 700;
 }
 .page-echosystem .welcome-stats {
@@ -408,6 +408,31 @@
     max-width: 100%;
     flex-basis: auto;
     order: -1;
+  }
+}
+
+/* Mobile adjustments: reduce the welcome image size so it doesn't dominate the hero */
+@media (max-width: 640px) {
+  .page-echosystem .intro-media {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .page-echosystem .intro-media img {
+    width: 100%;
+    height: auto;
+    max-height: 260px; /* reduced height on small screens */
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-echosystem .intro-media {
+    max-width: 300px;
+  }
+  .page-echosystem .intro-media img {
+    max-height: 200px; /* further reduce for very small devices */
   }
 }
 
