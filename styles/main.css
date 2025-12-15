@@ -1196,6 +1196,22 @@ h2 {
     padding: 8px 16px;
     font-size: 14px;
   }
+
+  /* Ensure hamburger sits on the right edge in mobile view */
+  .nav {
+    justify-content: flex-end;
+  }
+
+  /* Put the hamburger at the end of the nav flex container */
+  .nav-toggle {
+    order: 2;
+    margin-left: 0;
+  }
+
+  /* Keep the hidden nav-list accessible (it becomes fixed full-width when open) */
+  .nav-list {
+    order: 1;
+  }
 }
 
 /* Make the nav underline originate from the right on tablet and mobile */
