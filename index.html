@@ -535,6 +535,21 @@
 <script src="./scripts/main.js" defer></script>
 <script type="module" src="./scripts/home-blog-snippets.js"></script>
 <script src="./scripts/testimonials.js" defer></script>
+<!-- Tawk loader: will be replaced at build time by `scripts/inject-env.js` using `TAWK_SRC` from .env -->
+<script>
+  (function () {
+    var src = '__TAWK_SRC__';
+    if (!src || src === '__TAWK_SRC__') return;
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    var s1 = document.createElement('script');
+    s1.async = true;
+    s1.src = src;
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    var s0 = document.getElementsByTagName('script')[0];
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
 </body>
 </html> 
 

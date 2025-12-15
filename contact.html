@@ -135,7 +135,7 @@
               </div>
             </div>
 
-            <form class="get-started-form" action="#" method="post">
+            <form id="contactForm" class="get-started-form" action="#" method="post" data-endpoint="__FORMSPREE_ENDPOINT__">
               <div class="grid two">
                 <div>
                   <label>Name
@@ -179,7 +179,8 @@
                   <option value="corporate-events">
                     Corporate Event Coverage
                   </option>
-                  <option value="other">Other</option>
+                  <option value="agent">Agent (ECHOsystem)</option>
+                  <option value="General">General</option>
                 </select>
               </label>
 
@@ -193,7 +194,14 @@
                 ></textarea>
               </label>
 
-              <!-- Submit button intentionally removed per design request -->
+              <!-- Honeypot field to reduce spam (hidden from users) -->
+              <label style="display:none;">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </label>
+
+              <div style="margin-top:18px">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
             </form>
           </div>
         </div>
@@ -284,5 +292,6 @@
   <script src="./scripts/main.js" defer></script>
   <script type="module" src="./scripts/home-blog-snippets.js"></script>
   <script src="./scripts/testimonials.js" defer></script>
+  <script src="./scripts/contact-send.js" defer></script>
   </body>
 </html>

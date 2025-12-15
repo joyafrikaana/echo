@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seed-blog-posts.js"
+    "seed": "node seed-blog-posts.js",
+    "build": "node scripts/inject-env.js",
+    "build:inject": "node scripts/inject-env.js"
   },
   "repository": {
     "type": "git",
