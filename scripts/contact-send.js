@@ -7,10 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
   if (!form) return;
 
-  const endpoint =
+  let endpoint =
     form.dataset.endpoint && form.dataset.endpoint !== ""
       ? form.dataset.endpoint
       : null;
+
+  // Treat common placeholder values as "not configured" so we don't try
+  // to POST to literal placeholders like "__FORMSPREE_ENDPOINT__".
+  if (
+    endpoint &&
+    (endpoint.startsWith("__") ||
+      endpoint.includes("FORMSPREE_ENDPOINT") ||
+      endpoint === "__FORMSPREE_ENDPOINT__")
+  ) {
+    endpoint = null;
+  }
 
   const statusEl = document.createElement("div");
   statusEl.className = "form-status";
@@ -22,10 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
     statusEl.textContent = "";
 
     const submitBtn = form.querySelector('[type="submit"]');
+    let originalBtnText = "";
     if (submitBtn) {
+      // Preserve the original button label so we can restore it on failure.
+      originalBtnText = submitBtn.textContent || "Submit";
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      submitBtn.textContent = "Submitted";
     }
+
+    let submitSuccess = false;
 
     const formData = new FormData(form);
     const data = {};
@@ -50,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         statusEl.textContent =
           "Thanks for contacting us. We would be in touch with you!";
         form.reset();
+        submitSuccess = true;
       } else {
         const errText = await res.text().catch(() => "Request failed");
         throw new Error(errText || "Submission failed");
@@ -80,8 +97,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } finally {
       if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
+        // If submission failed, restore the original button label to allow retry;
+        // otherwise keep it disabled and labelled "Submitted" to reflect success.
+        if (!submitSuccess) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
       }
     }
   });
