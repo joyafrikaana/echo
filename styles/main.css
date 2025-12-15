@@ -3868,6 +3868,54 @@ blockquote cite {
     margin: 0 6px;
   }
 
+  /* Simple global page animation: subtle fade-and-slide for header, main and footer
+   Respects prefers-reduced-motion. Keeps it light and performant. */
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      --page-anim-duration: 600ms;
+      --page-anim-ease: cubic-bezier(0.22, 0.9, 0.5, 1);
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .site-header,
+    main,
+    .site-footer-minimal {
+      opacity: 0;
+      animation: pageIn var(--page-anim-duration) var(--page-anim-ease) both;
+    }
+
+    /* Small stagger for a pleasant entrance */
+    .site-header {
+      animation-delay: 0ms;
+    }
+    main {
+      animation-delay: 120ms;
+    }
+    .site-footer-minimal {
+      animation-delay: 240ms;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header,
+    main,
+    .site-footer-minimal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   /* Testimonials: keep peek but increase nav tappable area */
   .testimonials-track {
     gap: 12px;
