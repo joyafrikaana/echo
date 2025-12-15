@@ -1352,7 +1352,7 @@ h2 {
 @media (max-width: 640px) {
   .hero {
     padding: 100px 0 30px;
-    min-height: 100vh; /* ensure hero covers full viewport on small screens */
+    min-height: 85vh; /* reduced from 100vh to 70vh for shorter hero */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3714,20 +3714,18 @@ blockquote cite {
     margin-bottom: 18px;
   }
 
-  /* Truncate service section paragraphs to 4 lines on mobile with ellipsis */
+  /* Allow service section paragraphs to flow naturally on mobile (no truncation) */
   .branding-content p,
   .content-mapping-content p,
   .photoshoot-content p,
   .social-media-content p,
   .media-content p,
   .corporate-content p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4; /* limit to 4 lines */
-    line-clamp: 4; /* standard property for compatibility */
-    max-height: calc(1.55em * 4); /* fallback for non-webkit browsers */
+    /* keep mobile typography slightly smaller but let content determine height */
+    display: block;
+    overflow: visible;
+    text-overflow: clip;
+    max-height: none;
   }
 
   .branding-image img,
@@ -3770,6 +3768,24 @@ blockquote cite {
     padding: 10px 18px !important; /* keep touch-friendly size */
     box-sizing: border-box !important;
   }
+}
+
+/* Homepage-only service previews: show a short teaser on the home page and
+   link to the full service page for details. This only applies when the
+   body has the `page-home` class (index.html). */
+.page-home .branding-content p,
+.page-home .content-mapping-content p,
+.page-home .photoshoot-content p,
+.page-home .social-media-content p,
+.page-home .media-content p,
+.page-home .corporate-content p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5; /* show ~5 lines as a preview */
+  line-clamp: 5;
+  max-height: calc(1.55em * 5);
 }
 
 /* Consolidated mobile UX improvements: touch targets, spacing, focus, and layout */
