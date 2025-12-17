@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joyafrikaana.github.io/echo/sitemap.xml
