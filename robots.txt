@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://joyafrikaana.github.io/echo/sitemap.xml
+Sitemap: https://www.echomediahq.com/sitemap.xml
